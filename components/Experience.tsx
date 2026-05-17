@@ -13,12 +13,12 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-white">Experience</h2>
         </motion.div>
 
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-6">
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
@@ -26,7 +26,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="card px-6 py-5 flex flex-col items-center text-center gap-4"
+              className="card px-8 py-8 flex flex-col items-center text-center gap-5"
             >
               <div className="w-10 h-10 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center shrink-0">
                 <Building2 size={18} className="text-violet-400" />

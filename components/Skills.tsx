@@ -19,7 +19,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <span className="inline-block text-xs text-cyan-400 font-semibold tracking-[0.25em] uppercase mb-5">Tech Stack</span>
           <h2 className="text-2xl sm:text-3xl font-bold text-white">Skills</h2>
@@ -35,7 +35,7 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
-                className={`rounded-2xl border p-8 bg-gradient-to-b ${s.gradient} ${s.border} flex flex-col items-center gap-7 text-center`}
+                className={`rounded-2xl border p-10 bg-gradient-to-b ${s.gradient} ${s.border} flex flex-col items-center gap-8 text-center`}
               >
                 <div className="flex flex-col items-center gap-3">
                   <span className="text-4xl" role="img" aria-label={cat.category}>{cat.icon}</span>
