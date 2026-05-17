@@ -32,7 +32,7 @@ export const projects: Project[] = [
     shortDescription:
       "Kubernetes 환경의 메트릭·로그·이벤트를 통합 수집하고 AI가 이상을 감지·분석하여 티켓 자동 생성 및 실시간 알람까지 수행하는 SaaS형 지능형 모니터링 플랫폼",
     description:
-      "Prometheus/Loki/K8s API로 메트릭·로그·이벤트를 통합 수집하고, 룰 기반 1차 탐지 후 AI 서버(FastAPI)에서 Isolation Forest ML·RAG·GPT로 정밀 분석하여 원인 설명과 해결책을 자동 생성하는 플랫폼입니다. 탐지된 이상은 티켓으로 자동 생성되고 이메일·SSE로 실시간 알람됩니다. GitHub 오픈소스 공개를 목표로 진행 중입니다.",
+      "Prometheus/Loki/K8s API로 메트릭·로그·이벤트를 통합 수집하고, 룰 기반 1차 탐지 후 AI 서버(FastAPI)에서 Isolation Forest ML·RAG·GPT로 정밀 분석하여 원인 설명과 해결책을 자동 생성하는 플랫폼입니다. 탐지된 이상은 티켓으로 자동 생성되고 이메일·SSE로 실시간 알람됩니다.",
     role: "Spring Boot 백엔드 전체 담당 (데이터 수집·룰 기반 탐지·AI 연동·티켓 자동화·SSE/이메일 알람·REST API). React 프론트엔드 담당 (실시간 메트릭 대시보드·티켓 목록/상세 UI·SSE 실시간 연동) — Claude Code를 활용해 AI와 협업하며 대시보드를 설계·구현.",
     techStack: [
       { name: "Java 17 / Spring Boot 3" },

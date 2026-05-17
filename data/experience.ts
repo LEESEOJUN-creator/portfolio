@@ -20,7 +20,7 @@ export type Certification = {
 export const educations: Education[] = [
   {
     school: "동국대학교",
-    departments: ["정보통신공학"],
+    departments: ["정보통신공학과"],
     period: "2021.03 ~ ",
   },
 ];
