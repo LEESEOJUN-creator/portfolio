@@ -75,17 +75,17 @@ p, li, span {
 
 /* 카드: overflow-hidden 금지 → 내부 텍스트 자동 줄바꿈 */
 .card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
   overflow: visible;
 }
 
 .card:hover {
-  border-color: rgba(139, 92, 246, 0.35);
-  box-shadow: 0 0 32px rgba(139, 92, 246, 0.1), 0 8px 40px rgba(0, 0, 0, 0.5);
-  transform: translateY(-3px);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 32px rgba(139, 92, 246, 0.08), 0 8px 40px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
 }
 
 /* 말줄임 유틸 */
