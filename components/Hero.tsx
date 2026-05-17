@@ -84,7 +84,7 @@ export default function Hero() {
           style={{ wordBreak: "keep-all" }}
         >
           동국대학교 정보통신공학과 재학 중입니다.<br />
-          Spring Boot 백엔드 개발과 Kubernetes 기반 인프라를 함께 학습하며,<br />
+          백엔드 개발과 인프라를 함께 학습하며,<br />
           안정적인 서버 환경을 고민하는 개발자를 목표로 합니다.
         </motion.p>
 
