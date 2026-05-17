@@ -12,8 +12,8 @@ const STYLES: Record<string, { gradient: string; border: string; badge: string; 
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-36 px-6 sm:px-10 lg:px-16">
-      <div className="max-w-5xl mx-auto">
+    <section id="skills" className="w-full py-36">
+      <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -21,18 +21,13 @@ export default function Skills() {
           transition={{ duration: 0.5 }}
           className="text-center mb-20"
         >
-          <span className="inline-block text-xs text-cyan-400 font-semibold tracking-[0.25em] uppercase mb-5">
-            Tech Stack
-          </span>
+          <span className="inline-block text-xs text-cyan-400 font-semibold tracking-[0.25em] uppercase mb-5">Tech Stack</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-white">Skills</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.map((cat, i) => {
-            const s = STYLES[cat.category] ?? {
-              gradient: "from-white/5 to-transparent", border: "border-white/10",
-              badge: "bg-white/8 text-white/60 border-white/10", dot: "bg-white/40",
-            };
+            const s = STYLES[cat.category] ?? { gradient: "from-white/5 to-transparent", border: "border-white/10", badge: "bg-white/8 text-white/60 border-white/10", dot: "bg-white/40" };
             return (
               <motion.div
                 key={cat.category}
@@ -40,23 +35,19 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
-                className={`rounded-2xl border p-8 bg-gradient-to-b ${s.gradient} ${s.border} flex flex-col gap-7`}
+                className={`rounded-2xl border p-8 bg-gradient-to-b ${s.gradient} ${s.border} flex flex-col items-center gap-7 text-center`}
               >
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl" role="img" aria-label={cat.category}>{cat.icon}</span>
+                <div className="flex flex-col items-center gap-3">
+                  <span className="text-4xl" role="img" aria-label={cat.category}>{cat.icon}</span>
                   <h3 className="text-base font-semibold text-white/80">{cat.category}</h3>
                 </div>
-                <ul className="flex flex-col gap-3">
+                <ul className="flex flex-col gap-3 w-full">
                   {cat.skills.map((skill) => (
                     <li key={skill}>
-                      <motion.div
-                        whileHover={{ x: 5 }}
-                        transition={{ duration: 0.15 }}
-                        className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border text-sm font-medium ${s.badge} min-h-[52px]`}
-                      >
+                      <div className={`flex items-center justify-center gap-3 px-4 py-3.5 rounded-xl border text-sm font-medium ${s.badge} min-h-[52px]`}>
                         <span className={`w-2 h-2 rounded-full shrink-0 ${s.dot}`} />
                         <span className="break-keep leading-snug">{skill}</span>
-                      </motion.div>
+                      </div>
                     </li>
                   ))}
                 </ul>
