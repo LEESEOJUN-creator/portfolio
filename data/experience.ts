@@ -63,7 +63,7 @@ export const activities: Activity[] = [
     name: "학과 축구소모임 FC정통",
     description: "정보통신공학과 축구 소모임 부원으로 활동",
     role: "부원",
-    period: "2025.03 ~ 2026.02",
+    period: "2024.03 ~ 2026.02",
   },
 ];
 
