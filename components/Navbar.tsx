@@ -40,12 +40,12 @@ export default function Navbar() {
       <nav className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16 h-20 flex items-center justify-end gap-8">
 
         {/* 데스크톱 nav */}
-        <ul className="hidden md:flex items-center gap-1 shrink-0">
+        <ul className="hidden md:flex items-center gap-2 shrink-0">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <button
                 onClick={() => scrollTo(link.href)}
-                className="px-4 py-2.5 text-sm font-medium text-white/50 hover:text-white/90 rounded-xl hover:bg-white/5 transition-all duration-200 cursor-pointer min-h-[44px] whitespace-nowrap"
+                className="px-5 py-2.5 text-sm font-medium text-white/50 hover:text-white/90 rounded-xl hover:bg-white/5 transition-all duration-200 cursor-pointer min-h-[44px] whitespace-nowrap"
               >
                 {link.label}
               </button>

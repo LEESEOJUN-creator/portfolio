@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 
 function Divider() {
   return (
-    <div className="flex justify-center px-6 sm:px-10 lg:px-16">
+    <div className="flex justify-center px-6 sm:px-10 lg:px-16 py-4">
       <div className="w-full max-w-3xl border-t border-white/6" />
     </div>
   );
