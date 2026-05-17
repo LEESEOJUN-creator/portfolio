@@ -12,6 +12,7 @@ const TAG_COLORS: Record<string, string> = {
   팀프로젝트:   "text-cyan-300 bg-cyan-500/12 border-cyan-500/20",
   Infra:        "text-emerald-300 bg-emerald-500/12 border-emerald-500/20",
   Backend:      "text-orange-300 bg-orange-500/12 border-orange-500/20",
+  Frontend:     "text-pink-300 bg-pink-500/12 border-pink-500/20",
 };
 
 const THUMBNAILS: Record<string, { from: string; via: string; to: string; icon: string }> = {

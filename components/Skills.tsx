@@ -8,6 +8,7 @@ const STYLES: Record<string, { gradient: string; border: string; badge: string; 
   Database:   { gradient: "from-cyan-500/10 to-transparent",   border: "border-cyan-500/15",   badge: "bg-cyan-500/10 text-cyan-200 border-cyan-500/18",     dot: "bg-cyan-400"   },
   Infra:      { gradient: "from-emerald-500/10 to-transparent",border: "border-emerald-500/15",badge: "bg-emerald-500/10 text-emerald-200 border-emerald-500/18", dot: "bg-emerald-400" },
   Monitoring: { gradient: "from-orange-500/10 to-transparent", border: "border-orange-500/15", badge: "bg-orange-500/10 text-orange-200 border-orange-500/18", dot: "bg-orange-400" },
+  Frontend:   { gradient: "from-pink-500/10 to-transparent",   border: "border-pink-500/15",   badge: "bg-pink-500/10 text-pink-200 border-pink-500/18",     dot: "bg-pink-400"   },
 };
 
 export default function Skills() {
@@ -25,7 +26,7 @@ export default function Skills() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white">Skills</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {skillCategories.map((cat, i) => {
             const s = STYLES[cat.category] ?? { gradient: "from-white/5 to-transparent", border: "border-white/10", badge: "bg-white/8 text-white/60 border-white/10", dot: "bg-white/40" };
             return (

@@ -13,7 +13,7 @@ export const skillCategories: SkillCategory[] = [
   {
     category: "Database",
     icon: "🗄️",
-    skills: ["MySQL", "Redis"],
+    skills: ["MySQL", "Redis","PostgresQL"],
   },
   {
     category: "Infra",
@@ -24,5 +24,10 @@ export const skillCategories: SkillCategory[] = [
     category: "Monitoring",
     icon: "📊",
     skills: ["Prometheus", "Grafana", "Loki"],
+  },
+  {
+    category: "Frontend",
+    icon: "🖥️",
+    skills: ["React", "Next.js", "TypeScript", "Chart.js"],
   },
 ];

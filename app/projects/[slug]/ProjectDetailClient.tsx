@@ -19,6 +19,7 @@ const TAG_COLORS: Record<string, string> = {
   팀프로젝트: "bg-cyan-500/15 text-cyan-300 border-cyan-500/25",
   Infra: "bg-emerald-500/15 text-emerald-300 border-emerald-500/25",
   Backend: "bg-orange-500/15 text-orange-300 border-orange-500/25",
+  Frontend: "bg-pink-500/15 text-pink-300 border-pink-500/25",
 };
 
 /* 공통 페이드업 애니메이션 */
