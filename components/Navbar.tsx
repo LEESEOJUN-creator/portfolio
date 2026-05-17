@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -52,16 +51,6 @@ export default function Navbar() {
               </button>
             </li>
           ))}
-          <li className="ml-3">
-            <a
-              href="https://github.com/LEESEOJUN-creator"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-white rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 hover:from-violet-500 hover:to-cyan-500 transition-all duration-200 min-h-[44px] whitespace-nowrap"
-            >
-              GitHub
-            </a>
-          </li>
         </ul>
 
         {/* 모바일 버튼 */}
@@ -95,16 +84,6 @@ export default function Navbar() {
                   </button>
                 </li>
               ))}
-              <li className="pt-2">
-                <a
-                  href="https://github.com/LEESEOJUN-creator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-5 py-4 text-sm font-medium text-white rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 min-h-[52px]"
-                >
-                  GitHub 바로가기
-                </a>
-              </li>
             </ul>
           </motion.div>
         )}

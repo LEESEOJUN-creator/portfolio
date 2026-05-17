@@ -88,12 +88,12 @@ export default function Hero() {
           className="flex flex-wrap items-center justify-center gap-4"
         >
           <a href="https://github.com/LEESEOJUN-creator" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-5 rounded-xl bg-white/5 border border-white/12 text-base font-medium text-white/75 hover:text-white hover:bg-white/8 transition-all duration-200 min-h-[64px] whitespace-nowrap">
-            <GitBranch size={18} className="shrink-0" />GitHub
+            className="inline-flex items-center gap-3 px-10 py-5 rounded-xl bg-white/5 border border-white/12 text-sm font-medium text-white/75 hover:text-white hover:bg-white/8 transition-all duration-200 min-h-[64px] whitespace-nowrap">
+            <GitBranch size={16} className="shrink-0" />GitHub
           </a>
           <a href="mailto:seojun7988@naver.com"
-            className="inline-flex items-center gap-3 px-10 py-5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 text-base font-medium text-white hover:from-violet-500 hover:to-cyan-500 transition-all duration-200 shadow-lg shadow-violet-500/20 min-h-[64px] whitespace-nowrap">
-            <Mail size={18} className="shrink-0" />이메일 보내기
+            className="inline-flex items-center gap-3 px-10 py-5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 text-sm font-medium text-white hover:from-violet-500 hover:to-cyan-500 transition-all duration-200 shadow-lg shadow-violet-500/20 min-h-[64px] whitespace-nowrap">
+            <Mail size={16} className="shrink-0" />이메일 보내기
           </a>
         </motion.div>
       </div>
