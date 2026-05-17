@@ -1,0 +1,211 @@
+export type Project = {
+  slug: string;
+  tag: string[];
+  title: string;
+  period: string;
+  status: "완료" | "진행중";
+  shortDescription: string;
+  description: string;
+  role: string;
+  techStack: { name: string; reason?: string }[];
+  issues: {
+    issue: string;
+    analysis?: string;
+    solution: string;
+    result: string;
+  }[];
+  retrospective: {
+    growth: string;
+    regret: string;
+    future: string;
+  };
+  github?: string;
+};
+
+export const projects: Project[] = [
+  {
+    slug: "k8s-cicd",
+    tag: ["개인프로젝트", "Infra"],
+    title: "Kubernetes CI/CD + GitOps",
+    period: "2024.xx ~ 2024.xx",
+    status: "완료",
+    shortDescription:
+      "GitHub Actions와 ArgoCD를 활용해 코드 push부터 자동 배포까지 이어지는 GitOps CI/CD 파이프라인을 구성한 실습 프로젝트",
+    description:
+      "Kubernetes 환경에서 GitHub Actions와 ArgoCD를 활용해 코드 push부터 자동 배포까지 이어지는 GitOps CI/CD 파이프라인을 구성한 실습 프로젝트입니다.",
+    role: "전체 구성 (개인 프로젝트)",
+    techStack: [
+      { name: "Docker" },
+      { name: "Kubernetes" },
+      {
+        name: "GitHub Actions",
+        reason: "main 브랜치 push 시 자동 빌드 트리거를 위해 선택",
+      },
+      {
+        name: "ArgoCD",
+        reason:
+          "Git을 기준 상태로 두고 클러스터를 자동 동기화하는 GitOps 구현을 위해 선택",
+      },
+      {
+        name: "Helm",
+      },
+      { name: "kind" },
+    ],
+    issues: [
+      {
+        issue: "latest 태그 사용 시 ArgoCD가 이미지 변경을 감지하지 못함",
+        analysis:
+          "manifest의 image 값이 바뀌지 않으면 ArgoCD는 변경 없음으로 판단",
+        solution:
+          "commit SHA 기반 이미지 태그 적용으로 매 배포마다 manifest 값 변경",
+        result:
+          "코드 push 시 자동으로 새 이미지가 빌드되고 배포까지 연결되는 흐름 완성",
+      },
+      {
+        issue:
+          "GitHub Actions가 manifest 수정 후 다시 push하면 CI가 무한 반복 실행됨",
+        solution: "자동 커밋 메시지에 [skip ci] 추가로 불필요한 재실행 방지",
+        result: "CI 무한 루프 문제 해결",
+      },
+    ],
+    retrospective: {
+      growth:
+        "자동화를 단순히 연결하는 것이 아니라 변경 감지 방식과 반복 실행 문제까지 고려하며 구조를 설계하는 경험",
+      regret:
+        "로컬 kind 환경이라 실제 클라우드 환경(EKS 등)에서 LoadBalancer 타입 Service 동작을 직접 확인하지 못함",
+      future: "실제 클라우드 환경에서 전체 흐름 적용해보기",
+    },
+  },
+  {
+    slug: "k8s-monitoring",
+    tag: ["개인프로젝트", "Infra"],
+    title: "Kubernetes 모니터링",
+    period: "2024.xx ~ 2024.xx",
+    status: "완료",
+    shortDescription:
+      "Prometheus/Grafana/Loki 기반 모니터링 스택을 직접 구성한 실습 프로젝트",
+    description:
+      "Kubernetes 환경에서 Pod가 Running 상태인 것만으로는 실제 운영 상태를 알 수 없다는 한계를 느껴, Prometheus/Grafana/Loki 기반 모니터링 스택을 직접 구성한 실습 프로젝트입니다.",
+    role: "전체 구성 (개인 프로젝트)",
+    techStack: [
+      { name: "Kubernetes" },
+      {
+        name: "Helm",
+        reason:
+          "Prometheus 스택처럼 복잡한 리소스를 패키지로 설치하고 설정을 일관되게 관리하기 위해 선택",
+      },
+      { name: "Prometheus" },
+      { name: "Grafana" },
+      {
+        name: "Loki",
+        reason:
+          "메트릭만으로는 원인 추적이 어려워 로그도 함께 수집하기 위해 선택",
+      },
+    ],
+    issues: [
+      {
+        issue: "Grafana Pod가 CrashLoopBackOff 상태 발생",
+        analysis:
+          "kubectl logs 확인 결과 datasource provisioning 과정에서 default datasource 중복 설정 오류 발견",
+        solution:
+          "Helm upgrade의 --set 옵션으로 중복 default datasource 설정 비활성화",
+        result: "Grafana 정상 기동, Prometheus와 Loki datasource 연결 완료",
+      },
+    ],
+    retrospective: {
+      growth:
+        "장애 상황에서 재설치보다 로그 분석으로 근본 원인을 찾는 접근 방식을 익힘",
+      regret: "알림(Alert) 설정까지 연결하지 못함",
+      future: "Alertmanager 연동으로 임계치 초과 시 알림 받는 구조 추가",
+    },
+  },
+  {
+    slug: "graduation-checker",
+    tag: ["팀프로젝트", "Backend"],
+    title: "AI 기반 졸업요건 자동 판정 시스템",
+    period: "2024.xx ~ 2024.xx",
+    status: "완료",
+    shortDescription:
+      "성적표 PDF를 기반으로 이수 과목을 추출하고 졸업 가능 여부를 판단하는 서비스",
+    description:
+      "성적표 PDF를 기반으로 이수 과목을 추출하고 학번별 졸업요건과 비교해 졸업 가능 여부를 판단하는 서비스. Spring Boot 백엔드와 FastAPI AI 서버가 분리된 구조로 구성되었습니다.",
+    role: "Spring Boot 백엔드 담당. PDF 파싱 및 데이터 정제, Draft 임시 저장 구조 설계, 졸업 판정 서비스 로직, N+1 문제 개선",
+    techStack: [
+      { name: "Java" },
+      { name: "Spring Boot" },
+      { name: "JPA" },
+      { name: "MySQL" },
+      { name: "PDFBox" },
+      { name: "Tabula" },
+    ],
+    issues: [
+      {
+        issue: "PDF 파싱 시 줄바꿈과 공백으로 과목명과 학점 데이터가 깨지는 문제",
+        analysis: "PDFBox 텍스트 추출만으로는 표 구조를 정확히 인식하지 못함",
+        solution:
+          "Tabula의 SpreadsheetExtractionAlgorithm과 BasicExtractionAlgorithm을 함께 적용하고 normalize()로 특수 공백과 줄바꿈 정규화",
+        result:
+          "파싱 결과를 Draft로 임시 저장 후 사용자 확인·수정 뒤 최종 저장하는 흐름 구성",
+      },
+      {
+        issue: "졸업 판정 로직에서 이수 과목 개별 조회 시 N+1 문제 발생",
+        analysis: "SQL 로그 확인 결과 과목 수만큼 select 쿼리 반복 발생",
+        solution:
+          "판정에 필요한 데이터를 먼저 한 번에 조회하고 서비스 로직에서 메모리 비교 방식으로 변경",
+        result: "반복 쿼리 감소, 응답 속도 개선",
+      },
+    ],
+    retrospective: {
+      growth: "입력 데이터 신뢰성 확보와 도메인 규칙 처리의 중요성을 실무적으로 이해",
+      regret: "N+1 개선 전후 정확한 수치 측정을 하지 못함",
+      future: "fetch join 또는 DTO Projection으로 쿼리 최적화 개선",
+    },
+  },
+  {
+    slug: "spring-security-auth",
+    tag: ["개인프로젝트", "Backend"],
+    title: "Spring Security 인증 실습",
+    period: "2024.xx ~ 2024.xx",
+    status: "완료",
+    shortDescription:
+      "JWT 인증, Redis Refresh Token 관리, 카카오 OAuth2 로그인 연동을 직접 구현한 인증 실습 프로젝트",
+    description:
+      "Spring Boot 기반으로 JWT 인증, Redis Refresh Token 관리, 카카오 OAuth2 로그인 연동을 직접 구현한 인증 실습 프로젝트입니다.",
+    role: "전체 구성 (개인 프로젝트)",
+    techStack: [
+      { name: "Java" },
+      { name: "Spring Boot" },
+      { name: "Spring Security" },
+      { name: "JWT" },
+      {
+        name: "Redis",
+        reason:
+          "Refresh Token 저장 시 DB 대비 빠른 조회와 TTL 자동 만료 처리를 위해 선택",
+      },
+      { name: "MySQL" },
+      { name: "Kakao OAuth2" },
+    ],
+    issues: [
+      {
+        issue: "Refresh Token으로 API를 직접 호출하는 것을 막을 방법 필요",
+        solution:
+          "JWT payload에 type claim을 추가해 access/refresh 구분, 필터에서 type 검증",
+        result: "Refresh Token으로 API 직접 호출 차단",
+      },
+      {
+        issue: "로그아웃 후에도 Access Token이 만료 전까지 유효한 문제",
+        analysis: "JWT는 stateless라 발급 후 서버가 추적하지 않음",
+        solution:
+          "Refresh Token을 Redis에서 삭제해 재발급 차단, Access Token 수명을 30분으로 짧게 설정",
+        result: "재발급 경로 차단으로 사실상의 로그아웃 처리",
+      },
+    ],
+    retrospective: {
+      growth:
+        "세션 방식과 토큰 방식의 구조적 차이와 각각의 trade-off를 직접 구현하며 이해",
+      regret:
+        "Access Token 블랙리스트 처리를 구현하지 못해 로그아웃 후 완전한 무효화가 안 됨",
+      future: "Redis 블랙리스트로 Access Token도 즉시 무효화하는 구조 추가",
+    },
+  },
+];
