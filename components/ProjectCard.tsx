@@ -20,27 +20,31 @@ const tagColors: Record<string, string> = {
 export default function ProjectCard({ project, index }: Props) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.45, delay: index * 0.08 }}
+      className="h-full"
     >
-      <Link href={`/projects/${project.slug}`}>
-        <div className="card p-6 h-full flex flex-col gap-4 cursor-pointer group">
-          {/* Tags & Status */}
-          <div className="flex items-start justify-between gap-3">
+      <Link href={`/projects/${project.slug}`} className="block h-full">
+        {/* 카드: 충분한 padding, 최소 높이, flex column */}
+        <div className="card h-full flex flex-col gap-5 p-6 sm:p-7 group cursor-pointer min-h-[220px]">
+          {/* 상단: 태그 + 상태 */}
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            {/* 태그들 – 겹치지 않게 flex-wrap */}
             <div className="flex flex-wrap gap-1.5">
               {project.tag.map((t) => (
                 <span
                   key={t}
-                  className={`px-2 py-0.5 text-xs rounded-md border font-medium ${tagColors[t] ?? "bg-white/10 text-white/60 border-white/10"}`}
+                  className={`px-2.5 py-1 text-xs rounded-lg border font-medium whitespace-nowrap ${tagColors[t] ?? "bg-white/10 text-white/60 border-white/10"}`}
                 >
                   {t}
                 </span>
               ))}
             </div>
+            {/* 상태 뱃지 */}
             <span
-              className={`shrink-0 px-2.5 py-0.5 text-xs rounded-full font-medium ${
+              className={`shrink-0 px-3 py-1 text-xs rounded-full font-medium whitespace-nowrap ${
                 project.status === "완료"
                   ? "bg-green-500/15 text-green-400 border border-green-500/25"
                   : "bg-yellow-500/15 text-yellow-400 border border-yellow-500/25"
@@ -50,37 +54,44 @@ export default function ProjectCard({ project, index }: Props) {
             </span>
           </div>
 
-          {/* Title & Period */}
-          <div>
-            <div className="flex items-start justify-between gap-2">
-              <h3 className="text-lg font-semibold text-white group-hover:text-violet-300 transition-colors leading-tight">
+          {/* 제목 + 기간 */}
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              {/* break-keep: 한글 단어 단위 줄바꿈 */}
+              <h3
+                className="text-lg font-semibold text-white group-hover:text-violet-300 transition-colors leading-snug break-keep"
+                style={{ wordBreak: "keep-all" }}
+              >
                 {project.title}
               </h3>
-              <ArrowUpRight
-                size={18}
-                className="shrink-0 text-white/20 group-hover:text-violet-400 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
+              <p className="text-xs text-white/35 mt-1.5">{project.period}</p>
             </div>
-            <p className="text-xs text-white/30 mt-1">{project.period}</p>
+            <ArrowUpRight
+              size={18}
+              className="shrink-0 text-white/20 group-hover:text-violet-400 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 mt-0.5"
+            />
           </div>
 
-          {/* Description */}
-          <p className="text-sm text-white/50 leading-relaxed flex-1">
+          {/* 설명: flex-1로 남은 공간 차지, 3줄 말줄임 */}
+          <p
+            className="text-sm text-white/50 leading-[1.9] break-keep line-clamp-3 flex-1"
+            style={{ wordBreak: "keep-all" }}
+          >
             {project.shortDescription}
           </p>
 
-          {/* Tech Stack */}
-          <div className="flex flex-wrap gap-1.5 pt-2 border-t border-white/5">
+          {/* 기술 스택: flex-wrap으로 넘치지 않게 */}
+          <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/6">
             {project.techStack.slice(0, 5).map((tech) => (
               <span
                 key={tech.name}
-                className="px-2 py-0.5 text-xs rounded bg-white/5 text-white/40 font-mono"
+                className="px-2.5 py-1 text-xs rounded-md bg-white/5 text-white/40 font-mono whitespace-nowrap"
               >
                 {tech.name}
               </span>
             ))}
             {project.techStack.length > 5 && (
-              <span className="px-2 py-0.5 text-xs rounded bg-white/5 text-white/30 font-mono">
+              <span className="px-2.5 py-1 text-xs rounded-md bg-white/5 text-white/30 font-mono">
                 +{project.techStack.length - 5}
               </span>
             )}
