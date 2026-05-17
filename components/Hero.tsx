@@ -64,82 +64,65 @@ export default function Hero() {
         }}
       />
 
-      {/* 메인 콘텐츠 */}
-      <div className="relative z-10 w-full max-w-2xl mx-auto text-center flex flex-col gap-7 pt-24 pb-20">
+      {/* 메인 콘텐츠 — 가운데 정렬 */}
+      <div className="relative z-10 w-full max-w-2xl mx-auto text-center flex flex-col items-center gap-8 pt-24 pb-20">
+
         {/* 상태 뱃지 */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
+        <motion.span
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
+          className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-xs font-medium text-violet-300 bg-violet-500/10 border border-violet-500/20"
         >
-          <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs font-medium text-violet-300 bg-violet-500/10 border border-violet-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse shrink-0" />
-            기회를 찾고 있습니다
-          </span>
-        </motion.div>
+          <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse shrink-0" />
+          기회를 찾고 있습니다
+        </motion.span>
 
         {/* 이름 */}
-        <motion.div
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.2 }}
+          className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white"
         >
-          <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white">
-            이서준
-          </h1>
-        </motion.div>
+          이서준
+        </motion.h1>
 
         {/* 타이핑 직함 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.3 }}
-          className="flex items-center justify-center gap-1 min-h-[32px]"
+          className="flex items-center justify-center gap-1 min-h-[34px]"
         >
-          <span className="text-lg sm:text-xl font-medium gradient-text">{typed}</span>
+          <span className="text-xl sm:text-2xl font-medium gradient-text">{typed}</span>
           <span
-            className="w-0.5 h-5 bg-violet-400 inline-block ml-0.5"
+            className="w-0.5 h-6 bg-violet-400 inline-block ml-0.5"
             style={{ animation: "blink 1s step-end infinite" }}
           />
-        </motion.div>
-
-        {/* 소개문 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.4 }}
-        >
-          <p
-            className="text-base sm:text-lg text-white/45 leading-[2] max-w-xl mx-auto break-keep"
-            style={{ wordBreak: "keep-all" }}
-          >
-            Java/Spring 기반 백엔드 개발을 중심으로, Kubernetes CI/CD와 모니터링까지
-            연결해 서비스가 실제 환경에서 안정적으로 운영되는 흐름을 이해하려는
-            백엔드 개발자입니다.
-          </p>
         </motion.div>
 
         {/* CTA 버튼 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-3 pt-2"
+          transition={{ duration: 0.55, delay: 0.4 }}
+          className="flex flex-wrap items-center justify-center gap-4 pt-2"
         >
           <a
             href="https://github.com/LEESEOJUN-creator"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-white/5 border border-white/12 text-sm font-medium text-white/75 hover:text-white hover:bg-white/8 hover:border-white/22 transition-all duration-200 min-h-[52px] whitespace-nowrap"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white/5 border border-white/12 text-sm font-medium text-white/75 hover:text-white hover:bg-white/8 hover:border-white/22 transition-all duration-200 min-h-[56px] whitespace-nowrap"
           >
-            <GitBranch size={16} className="shrink-0" />
+            <GitBranch size={17} className="shrink-0" />
             GitHub
           </a>
           <a
-            href="mailto:a31237988a@gmail.com"
-            className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 text-sm font-medium text-white hover:from-violet-500 hover:to-cyan-500 transition-all duration-200 shadow-lg shadow-violet-500/20 min-h-[52px] whitespace-nowrap"
+            href="mailto:seojun7988@naver.com"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 text-sm font-medium text-white hover:from-violet-500 hover:to-cyan-500 transition-all duration-200 shadow-lg shadow-violet-500/20 min-h-[56px] whitespace-nowrap"
           >
-            <Mail size={16} className="shrink-0" />
+            <Mail size={17} className="shrink-0" />
             이메일 보내기
           </a>
         </motion.div>

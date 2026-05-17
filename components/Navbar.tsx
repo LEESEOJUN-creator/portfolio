@@ -29,7 +29,7 @@ export default function Navbar() {
 
   return (
     <motion.header
-      initial={{ y: -72, opacity: 0 }}
+      initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -38,39 +38,40 @@ export default function Navbar() {
           : ""
       }`}
     >
-      {/* 최대 너비 + 충분한 수평 패딩 */}
-      <nav className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-4">
+      {/* 높이 h-20으로 넉넉하게, 수평 패딩도 충분히 */}
+      <nav className="max-w-6xl mx-auto px-8 sm:px-12 h-20 flex items-center justify-between gap-6">
+
         {/* 로고 */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2.5 shrink-0 group"
+          className="flex items-center gap-3 shrink-0 group"
         >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center text-xs font-bold text-white shadow-lg shadow-violet-500/25">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-violet-500/25">
             이
           </div>
-          <span className="text-sm font-semibold text-white/70 group-hover:text-white transition-colors hidden sm:block">
+          <span className="text-base font-semibold text-white/70 group-hover:text-white transition-colors hidden sm:block tracking-wide">
             이서준
           </span>
         </button>
 
         {/* 데스크톱 nav */}
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden md:flex items-center gap-2">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <button
                 onClick={() => scrollTo(link.href)}
-                className="px-4 py-2 text-sm text-white/50 hover:text-white/90 rounded-lg hover:bg-white/5 transition-all duration-200 cursor-pointer min-h-[40px]"
+                className="px-5 py-3 text-sm font-medium text-white/50 hover:text-white/90 rounded-xl hover:bg-white/5 transition-all duration-200 cursor-pointer min-h-[48px] tracking-wide"
               >
                 {link.label}
               </button>
             </li>
           ))}
-          <li className="ml-3">
+          <li className="ml-4">
             <a
               href="https://github.com/LEESEOJUN-creator"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 hover:from-violet-500 hover:to-cyan-500 transition-all duration-200 min-h-[40px]"
+              className="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-white rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 hover:from-violet-500 hover:to-cyan-500 transition-all duration-200 min-h-[48px] tracking-wide"
             >
               GitHub
             </a>
@@ -79,11 +80,11 @@ export default function Navbar() {
 
         {/* 모바일 버튼 */}
         <button
-          className="md:hidden p-2 text-white/60 hover:text-white transition-colors rounded-lg hover:bg-white/5 min-h-[44px] min-w-[44px] flex items-center justify-center"
+          className="md:hidden p-3 text-white/60 hover:text-white transition-colors rounded-xl hover:bg-white/5 min-h-[48px] min-w-[48px] flex items-center justify-center"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="메뉴"
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
@@ -97,12 +98,12 @@ export default function Navbar() {
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="md:hidden bg-[#080812]/95 backdrop-blur-2xl border-b border-violet-500/10 overflow-hidden"
           >
-            <ul className="max-w-6xl mx-auto px-5 py-4 flex flex-col gap-1">
+            <ul className="max-w-6xl mx-auto px-8 py-5 flex flex-col gap-1.5">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <button
                     onClick={() => scrollTo(link.href)}
-                    className="w-full text-left px-4 py-3.5 text-sm text-white/60 hover:text-white hover:bg-white/5 rounded-xl transition-all min-h-[48px]"
+                    className="w-full text-left px-5 py-4 text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 rounded-xl transition-all min-h-[52px]"
                   >
                     {link.label}
                   </button>
@@ -113,7 +114,7 @@ export default function Navbar() {
                   href="https://github.com/LEESEOJUN-creator"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-3.5 text-sm font-medium text-white rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 min-h-[48px]"
+                  className="flex items-center justify-center gap-2 px-5 py-4 text-sm font-medium text-white rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 min-h-[52px]"
                 >
                   GitHub 바로가기
                 </a>
