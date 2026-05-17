@@ -6,8 +6,8 @@ import { Award, Calendar } from "lucide-react";
 
 export default function Certifications() {
   return (
-    <section className="w-full py-28">
-      <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-16">
+    <section className="w-full py-28 flex flex-col items-center px-6 sm:px-10 lg:px-16">
+      <div className="w-full max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -15,10 +15,10 @@ export default function Certifications() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">Certifications</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">Certifications</h2>
         </motion.div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-5">
           {certifications.map((cert, i) => (
             <motion.div
               key={i}
@@ -28,12 +28,10 @@ export default function Certifications() {
               transition={{ duration: 0.45, delay: i * 0.08 }}
               className="card px-6 py-5 flex flex-col items-center text-center gap-3"
             >
-              {/* 아이콘 */}
               <div className="w-10 h-10 rounded-full bg-orange-500/20 border border-orange-500/30 flex items-center justify-center shrink-0">
                 <Award size={18} className="text-orange-400" />
               </div>
 
-              {/* 이름 + 발급처 */}
               <div className="flex flex-col items-center gap-1">
                 <p className="text-sm font-bold text-white break-keep" style={{ wordBreak: "keep-all" }}>
                   {cert.name}
@@ -41,7 +39,6 @@ export default function Certifications() {
                 <p className="text-xs text-white/40">{cert.issuer}</p>
               </div>
 
-              {/* 날짜 */}
               <div className="flex items-center gap-1.5 text-white/35">
                 <Calendar size={12} className="shrink-0" />
                 <span className="text-xs whitespace-nowrap">{cert.date}</span>

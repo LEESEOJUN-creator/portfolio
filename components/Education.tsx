@@ -6,8 +6,8 @@ import { GraduationCap } from "lucide-react";
 
 export default function Education() {
   return (
-    <section className="w-full py-28">
-      <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-16">
+    <section className="w-full py-28 flex flex-col items-center px-6 sm:px-10 lg:px-16">
+      <div className="w-full max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -15,10 +15,10 @@ export default function Education() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">Education</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">Education</h2>
         </motion.div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-5">
           {educations.map((edu, i) => (
             <motion.div
               key={i}

@@ -12,8 +12,8 @@ const STYLES: Record<string, { gradient: string; border: string; badge: string; 
 
 export default function Skills() {
   return (
-    <section id="skills" className="w-full py-36">
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16">
+    <section id="skills" className="w-full py-36 flex flex-col items-center px-6 sm:px-10 lg:px-16">
+      <div className="w-full max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ export default function Skills() {
           className="text-center mb-20"
         >
           <span className="inline-block text-xs text-cyan-400 font-semibold tracking-[0.25em] uppercase mb-5">Tech Stack</span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">Skills</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">Skills</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

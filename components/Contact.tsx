@@ -5,8 +5,8 @@ import { Mail, GitBranch, ExternalLink } from "lucide-react";
 
 export default function Contact() {
   return (
-    <section id="contact" className="w-full py-36">
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16">
+    <section id="contact" className="w-full py-36 flex flex-col items-center px-6 sm:px-10 lg:px-16">
+      <div className="w-full max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -15,7 +15,7 @@ export default function Contact() {
           className="text-center mb-20"
         >
           <span className="inline-block text-xs text-violet-400 font-semibold tracking-[0.25em] uppercase mb-5">Get in touch</span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">Contact</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">Contact</h2>
         </motion.div>
 
         <motion.div
@@ -54,7 +54,7 @@ export default function Contact() {
         </motion.div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 mt-24 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="w-full max-w-5xl mt-24 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p className="text-xs text-white/20 text-center">© 2025 이서준. Built with Next.js & Tailwind CSS.</p>
         <p className="text-xs text-white/15">Deployed on Vercel</p>
       </div>
