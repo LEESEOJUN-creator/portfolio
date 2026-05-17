@@ -10,91 +10,143 @@ type Props = {
   index: number;
 };
 
-const tagColors: Record<string, string> = {
-  개인프로젝트: "bg-violet-500/15 text-violet-300 border-violet-500/25",
-  팀프로젝트: "bg-cyan-500/15 text-cyan-300 border-cyan-500/25",
-  Infra: "bg-emerald-500/15 text-emerald-300 border-emerald-500/25",
-  Backend: "bg-orange-500/15 text-orange-300 border-orange-500/25",
+const TAG_COLORS: Record<string, string> = {
+  개인프로젝트: "text-violet-300 bg-violet-500/12 border-violet-500/20",
+  팀프로젝트: "text-cyan-300 bg-cyan-500/12 border-cyan-500/20",
+  Infra: "text-emerald-300 bg-emerald-500/12 border-emerald-500/20",
+  Backend: "text-orange-300 bg-orange-500/12 border-orange-500/20",
+};
+
+/* 프로젝트별 썸네일 그라데이션 */
+const THUMBNAILS: Record<string, { from: string; to: string; via: string; icon: string }> = {
+  "k8s-cicd": {
+    from: "from-violet-900/60",
+    via: "via-indigo-900/40",
+    to: "to-slate-900/60",
+    icon: "⚙️",
+  },
+  "k8s-monitoring": {
+    from: "from-cyan-900/60",
+    via: "via-teal-900/40",
+    to: "to-slate-900/60",
+    icon: "📊",
+  },
+  "graduation-checker": {
+    from: "from-orange-900/60",
+    via: "via-amber-900/40",
+    to: "to-slate-900/60",
+    icon: "🎓",
+  },
+  "spring-security-auth": {
+    from: "from-emerald-900/60",
+    via: "via-green-900/40",
+    to: "to-slate-900/60",
+    icon: "🔐",
+  },
 };
 
 export default function ProjectCard({ project, index }: Props) {
+  const thumb = THUMBNAILS[project.slug] ?? {
+    from: "from-violet-900/60",
+    via: "via-slate-900/40",
+    to: "to-slate-900/60",
+    icon: "📁",
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, delay: index * 0.08 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
       className="h-full"
     >
       <Link href={`/projects/${project.slug}`} className="block h-full">
-        {/* 카드: 충분한 padding, 최소 높이, flex column */}
-        <div className="card h-full flex flex-col gap-5 p-6 sm:p-7 group cursor-pointer min-h-[220px]">
-          {/* 상단: 태그 + 상태 */}
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            {/* 태그들 – 겹치지 않게 flex-wrap */}
-            <div className="flex flex-wrap gap-1.5">
-              {project.tag.map((t) => (
+        <div className="card h-full flex flex-col group cursor-pointer overflow-hidden">
+
+          {/* ── 썸네일 영역 ── */}
+          <div
+            className={`relative w-full h-44 sm:h-48 bg-gradient-to-br ${thumb.from} ${thumb.via} ${thumb.to} flex items-center justify-center overflow-hidden shrink-0`}
+          >
+            {/* 배경 패턴 */}
+            <div
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
+                backgroundSize: "32px 32px",
+              }}
+            />
+            {/* 그로우 오브 */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#080812]/80 to-transparent" />
+            {/* 아이콘 */}
+            <span className="relative text-5xl select-none opacity-70 group-hover:opacity-90 group-hover:scale-110 transition-all duration-300">
+              {thumb.icon}
+            </span>
+            {/* 화살표 */}
+            <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/8 border border-white/12 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              <ArrowUpRight size={14} className="text-white/80" />
+            </div>
+          </div>
+
+          {/* ── 카드 본문 ── */}
+          <div className="flex flex-col gap-4 p-6 sm:p-7 flex-1">
+
+            {/* 태그 + 상태 */}
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex flex-wrap gap-1.5">
+                {project.tag.map((t) => (
+                  <span
+                    key={t}
+                    className={`px-2.5 py-1 text-xs font-medium rounded-lg border whitespace-nowrap ${TAG_COLORS[t] ?? "text-white/50 bg-white/5 border-white/10"}`}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <span
+                className={`px-3 py-1 text-xs font-medium rounded-full border whitespace-nowrap ${
+                  project.status === "완료"
+                    ? "text-green-400 bg-green-500/12 border-green-500/20"
+                    : "text-yellow-400 bg-yellow-500/12 border-yellow-500/20"
+                }`}
+              >
+                {project.status}
+              </span>
+            </div>
+
+            {/* 제목 */}
+            <h3
+              className="text-lg sm:text-xl font-bold text-white group-hover:text-violet-300 transition-colors leading-snug break-keep"
+              style={{ wordBreak: "keep-all" }}
+            >
+              {project.title}
+            </h3>
+
+            {/* 설명 */}
+            <p
+              className="text-sm text-white/50 leading-[1.9] break-keep line-clamp-3 flex-1"
+              style={{ wordBreak: "keep-all" }}
+            >
+              {project.shortDescription}
+            </p>
+
+            {/* 기술 스택 */}
+            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/6">
+              {project.techStack.slice(0, 4).map((tech) => (
                 <span
-                  key={t}
-                  className={`px-2.5 py-1 text-xs rounded-lg border font-medium whitespace-nowrap ${tagColors[t] ?? "bg-white/10 text-white/60 border-white/10"}`}
+                  key={tech.name}
+                  className="px-2.5 py-1 text-xs rounded-lg bg-white/5 text-white/40 font-mono whitespace-nowrap"
                 >
-                  {t}
+                  {tech.name}
                 </span>
               ))}
+              {project.techStack.length > 4 && (
+                <span className="px-2.5 py-1 text-xs rounded-lg bg-white/5 text-white/30 font-mono">
+                  +{project.techStack.length - 4}
+                </span>
+              )}
             </div>
-            {/* 상태 뱃지 */}
-            <span
-              className={`shrink-0 px-3 py-1 text-xs rounded-full font-medium whitespace-nowrap ${
-                project.status === "완료"
-                  ? "bg-green-500/15 text-green-400 border border-green-500/25"
-                  : "bg-yellow-500/15 text-yellow-400 border border-yellow-500/25"
-              }`}
-            >
-              {project.status}
-            </span>
-          </div>
-
-          {/* 제목 + 기간 */}
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0 flex-1">
-              {/* break-keep: 한글 단어 단위 줄바꿈 */}
-              <h3
-                className="text-lg font-semibold text-white group-hover:text-violet-300 transition-colors leading-snug break-keep"
-                style={{ wordBreak: "keep-all" }}
-              >
-                {project.title}
-              </h3>
-              <p className="text-xs text-white/35 mt-1.5">{project.period}</p>
-            </div>
-            <ArrowUpRight
-              size={18}
-              className="shrink-0 text-white/20 group-hover:text-violet-400 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 mt-0.5"
-            />
-          </div>
-
-          {/* 설명: flex-1로 남은 공간 차지, 3줄 말줄임 */}
-          <p
-            className="text-sm text-white/50 leading-[1.9] break-keep line-clamp-3 flex-1"
-            style={{ wordBreak: "keep-all" }}
-          >
-            {project.shortDescription}
-          </p>
-
-          {/* 기술 스택: flex-wrap으로 넘치지 않게 */}
-          <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/6">
-            {project.techStack.slice(0, 5).map((tech) => (
-              <span
-                key={tech.name}
-                className="px-2.5 py-1 text-xs rounded-md bg-white/5 text-white/40 font-mono whitespace-nowrap"
-              >
-                {tech.name}
-              </span>
-            ))}
-            {project.techStack.length > 5 && (
-              <span className="px-2.5 py-1 text-xs rounded-md bg-white/5 text-white/30 font-mono">
-                +{project.techStack.length - 5}
-              </span>
-            )}
           </div>
         </div>
       </Link>
