@@ -162,6 +162,50 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "hidden-growth",
+    tag: ["팀프로젝트", "Backend"],
+    title: "Hidden Growth",
+    period: "2025",
+    status: "완료",
+    shortDescription:
+      "사용자의 비정형 경험 데이터를 AI 인터뷰·분석을 통해 스킬, 성장 지표, 포트폴리오 데이터로 구조화하는 AI 기반 커리어 성장 자동화 플랫폼",
+    description:
+      "Spring Boot와 FastAPI 기반 AI 서버가 분리된 구조로 운영되는 AI 기반 개인 커리어 성장 자동화 플랫폼입니다. 사용자의 자유로운 경험 기록을 스킬·성장 지표·포트폴리오 데이터로 구조화하는 서비스에서 Spring Boot 백엔드를 담당했습니다.",
+    role: "Spring Boot 백엔드 참여. Controller-Service-Repository 계층 구조 설계, DTO 기반 요청/응답 데이터 분리, AI 서버 연동 흐름 이해",
+    techStack: [
+      { name: "Java" },
+      { name: "Spring Boot" },
+      { name: "JPA" },
+      { name: "MySQL" },
+      {
+        name: "FastAPI",
+        reason: "AI 분석 기능을 분리된 외부 서버로 제공하는 AI 서버 (팀원 담당)",
+      },
+    ],
+    issues: [
+      {
+        issue: "비정형 경험 데이터를 서비스 데이터로 변환하는 흐름 설계 필요",
+        analysis:
+          "사용자의 자유로운 문장 형태 경험 기록은 그대로는 서비스 데이터로 활용하기 어렵고, AI 분석 결과를 백엔드에서 도메인 데이터로 저장하는 구조 설계가 필요",
+        solution:
+          "AI 서버 응답을 DTO로 전달받아 스킬·성장 지표 도메인 데이터로 매핑·저장하는 백엔드 흐름 구현",
+        result: "AI 결과와 백엔드 서비스 흐름이 연결되는 구조 이해 및 구현",
+      },
+      {
+        issue: "외부 AI 서버 응답 지연 및 예상과 다른 응답 형식 처리",
+        solution:
+          "요청/응답 DTO 형식을 명확히 정의하고, 예외 상황에 대비한 백엔드 레이어 처리 구조 고려",
+        result: "외부 API 연동 시 응답 형식 검증과 예외 처리의 중요성 경험",
+      },
+    ],
+    retrospective: {
+      growth:
+        "AI 분석 결과 자체보다 그 결과를 어떤 DTO로 받아 어떤 도메인 데이터로 저장하고 제공할지가 백엔드 핵심이라는 점을 실감",
+      regret: "외부 AI 서버와의 연동 부분을 더 직접적으로 구현하지 못함",
+      future: "외부 API 연동, 응답 검증, 예외 처리 구조를 직접 설계하는 경험 쌓기",
+    },
+  },
+  {
     slug: "spring-security-auth",
     tag: ["개인프로젝트", "Backend"],
     title: "Spring Security 인증 실습",
