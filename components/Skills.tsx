@@ -12,7 +12,7 @@ const STYLES: Record<string, { gradient: string; border: string; badge: string; 
 
 export default function Skills() {
   return (
-    <section id="skills" className="w-full py-36 flex flex-col items-center px-6 sm:px-10 lg:px-16">
+    <section id="skills" className="w-full py-20 flex flex-col items-center px-6 sm:px-10 lg:px-16">
       <div className="w-full max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
