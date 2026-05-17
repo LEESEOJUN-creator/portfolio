@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { Mail, ArrowDown, GitBranch } from "lucide-react";
 
 const TYPING_TEXTS = [
-  "Backend Developer",
-  "Infrastructure Enthusiast",
-  "Kubernetes Explorer",
-  "Spring Boot Engineer",
+  "백엔드 개발자",
+  "인프라 지향 개발자",
+  "Kubernetes 탐구자",
+  "Spring Boot 엔지니어",
 ];
 
 function useTypingAnimation(texts: string[], speed = 75, pause = 2200) {
@@ -88,12 +88,12 @@ export default function Hero() {
           className="flex flex-wrap items-center justify-center gap-4"
         >
           <a href="https://github.com/LEESEOJUN-creator" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white/5 border border-white/12 text-sm font-medium text-white/75 hover:text-white hover:bg-white/8 transition-all duration-200 min-h-[56px] whitespace-nowrap">
-            <GitBranch size={17} className="shrink-0" />GitHub
+            className="inline-flex items-center gap-3 px-10 py-5 rounded-xl bg-white/5 border border-white/12 text-base font-medium text-white/75 hover:text-white hover:bg-white/8 transition-all duration-200 min-h-[64px] whitespace-nowrap">
+            <GitBranch size={18} className="shrink-0" />GitHub
           </a>
           <a href="mailto:seojun7988@naver.com"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 text-sm font-medium text-white hover:from-violet-500 hover:to-cyan-500 transition-all duration-200 shadow-lg shadow-violet-500/20 min-h-[56px] whitespace-nowrap">
-            <Mail size={17} className="shrink-0" />이메일 보내기
+            className="inline-flex items-center gap-3 px-10 py-5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 text-base font-medium text-white hover:from-violet-500 hover:to-cyan-500 transition-all duration-200 shadow-lg shadow-violet-500/20 min-h-[64px] whitespace-nowrap">
+            <Mail size={18} className="shrink-0" />이메일 보내기
           </a>
         </motion.div>
       </div>

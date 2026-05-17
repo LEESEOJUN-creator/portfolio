@@ -22,7 +22,7 @@ export default function Skills() {
           className="text-center mb-20"
         >
           <span className="inline-block text-xs text-cyan-400 font-semibold tracking-[0.25em] uppercase mb-5">Tech Stack</span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">Skills</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">Skills</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

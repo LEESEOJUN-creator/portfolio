@@ -16,7 +16,7 @@ export default function Projects() {
           className="text-center mb-20"
         >
           <span className="inline-block text-xs text-violet-400 font-semibold tracking-[0.25em] uppercase mb-5">Work</span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Projects</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Projects</h2>
           <p className="text-white/40 text-base leading-[1.9] max-w-sm mx-auto break-keep" style={{ wordBreak: "keep-all" }}>
             직접 설계하고 구현한 프로젝트입니다.
           </p>

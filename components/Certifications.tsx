@@ -15,7 +15,7 @@ export default function Certifications() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">Certifications</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">Certifications</h2>
         </motion.div>
 
         <div className="flex flex-col gap-5">

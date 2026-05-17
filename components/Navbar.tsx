@@ -38,19 +38,9 @@ export default function Navbar() {
           : ""
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16 h-20 flex items-center justify-between gap-8">
+      <nav className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16 h-20 flex items-center justify-end gap-8">
 
-        {/* 로고 아이콘만 — 이름 없음 */}
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="shrink-0 group"
-        >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-violet-500/25 group-hover:scale-105 transition-transform">
-            이
-          </div>
-        </button>
-
-        {/* 데스크톱 nav — 링크들 잘리지 않게 */}
+        {/* 데스크톱 nav */}
         <ul className="hidden md:flex items-center gap-1 shrink-0">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
