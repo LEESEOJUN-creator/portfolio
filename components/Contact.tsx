@@ -5,9 +5,8 @@ import { Mail, GitBranch, ExternalLink } from "lucide-react";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-36 px-5 sm:px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* 헤더 — 가운데 정렬 */}
+    <section id="contact" className="py-36 px-6 sm:px-10 lg:px-16">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +33,6 @@ export default function Contact() {
         >
           <div className="absolute top-0 right-0 w-72 h-72 bg-violet-500/4 rounded-full blur-3xl pointer-events-none" />
 
-          {/* 가운데 정렬 */}
           <div className="relative flex flex-col items-center text-center gap-8">
             <div className="flex flex-col gap-4">
               <h3 className="text-2xl sm:text-3xl font-bold text-white leading-snug break-keep" style={{ wordBreak: "keep-all" }}>
@@ -69,8 +67,7 @@ export default function Contact() {
         </motion.div>
       </div>
 
-      {/* 푸터 */}
-      <div className="max-w-6xl mx-auto mt-24 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="max-w-5xl mx-auto mt-24 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p className="text-xs text-white/20 text-center sm:text-left">
           © 2025 이서준. Built with Next.js & Tailwind CSS.
         </p>

@@ -6,9 +6,8 @@ import { Award } from "lucide-react";
 
 export default function Certifications() {
   return (
-    <section className="py-28 px-5 sm:px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* 헤더 — 가운데 정렬 */}
+    <section className="py-28 px-6 sm:px-10 lg:px-16">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

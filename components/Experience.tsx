@@ -6,9 +6,8 @@ import { Building2, CheckCircle2 } from "lucide-react";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-36 px-5 sm:px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* 헤더 — 가운데 정렬 */}
+    <section id="experience" className="py-36 px-6 sm:px-10 lg:px-16">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,12 +34,12 @@ export default function Experience() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="relative pl-16 sm:pl-24"
               >
-                <div className="absolute left-5 sm:left-7 top-7 w-4 h-4 rounded-full bg-gradient-to-br from-emerald-400 to-violet-500 shadow-lg shadow-violet-500/30 border-2 border-[#080812] -translate-x-1/2" />
+                <div className="absolute left-5 sm:left-7 top-8 w-4 h-4 rounded-full bg-gradient-to-br from-emerald-400 to-violet-500 shadow-lg shadow-violet-500/30 border-2 border-[#080812] -translate-x-1/2" />
 
                 <div className="card p-8 sm:p-10 flex flex-col gap-7">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
                     <div className="flex items-start gap-5 min-w-0">
-                      <div className="w-13 h-13 rounded-2xl bg-emerald-500/10 border border-emerald-500/18 flex items-center justify-center shrink-0 p-3">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/18 flex items-center justify-center shrink-0">
                         <Building2 size={22} className="text-emerald-400" />
                       </div>
                       <div className="min-w-0">
@@ -62,7 +61,7 @@ export default function Experience() {
 
                   <ul className="flex flex-col gap-4">
                     {exp.details.map((detail, j) => (
-                      <li key={j} className="flex items-start gap-4 min-h-[32px]">
+                      <li key={j} className="flex items-start gap-4">
                         <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-1" />
                         <span className="text-sm text-white/45 leading-[2] break-keep" style={{ wordBreak: "keep-all" }}>
                           {detail}

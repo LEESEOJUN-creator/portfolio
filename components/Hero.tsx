@@ -46,7 +46,7 @@ export default function Hero() {
   const typed = useTypingAnimation(TYPING_TEXTS);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 sm:px-10 lg:px-16 overflow-hidden">
       {/* 배경 오브 */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/3 -left-32 w-[560px] h-[560px] bg-violet-600/6 rounded-full blur-3xl" />

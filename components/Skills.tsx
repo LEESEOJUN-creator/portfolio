@@ -12,9 +12,8 @@ const STYLES: Record<string, { gradient: string; border: string; badge: string; 
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-36 px-5 sm:px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* 헤더 — 가운데 정렬 */}
+    <section id="skills" className="py-36 px-6 sm:px-10 lg:px-16">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +29,10 @@ export default function Skills() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.map((cat, i) => {
-            const s = STYLES[cat.category] ?? { gradient: "from-white/5 to-transparent", border: "border-white/10", badge: "bg-white/8 text-white/60 border-white/10", dot: "bg-white/40" };
+            const s = STYLES[cat.category] ?? {
+              gradient: "from-white/5 to-transparent", border: "border-white/10",
+              badge: "bg-white/8 text-white/60 border-white/10", dot: "bg-white/40",
+            };
             return (
               <motion.div
                 key={cat.category}
