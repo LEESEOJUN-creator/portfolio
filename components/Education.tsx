@@ -35,8 +35,8 @@ export default function Education() {
 
               {/* 내용 */}
               <div className="flex flex-col items-center gap-2">
-                <h3 className="text-sm font-bold text-white">{edu.school}</h3>
-                <span className="text-xs text-white/35">{edu.period}</span>
+                <h3 className="text-base font-bold text-white">{edu.school}</h3>
+                <span className="text-sm text-white/35">{edu.period}</span>
                 <div className="flex flex-wrap justify-center gap-2">
                   {edu.departments.map((dept) => (
                     <span key={dept} className="px-3 py-1 text-xs font-medium rounded-md bg-cyan-500/12 text-cyan-300 border border-cyan-500/20 whitespace-nowrap">

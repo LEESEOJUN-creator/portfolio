@@ -32,17 +32,17 @@ export default function Experience() {
                 <Building2 size={18} className="text-violet-400" />
               </div>
 
-              <div className="flex flex-col items-center gap-1">
-                <h3 className="text-sm font-bold text-white">{exp.company}</h3>
-                <p className="text-xs text-violet-300">{exp.role}</p>
+              <div className="flex flex-col items-center gap-2">
+                <h3 className="text-base font-bold text-white">{exp.company}</h3>
+                <p className="text-sm text-violet-300">{exp.role}</p>
                 <span className="text-xs text-white/35">{exp.period}</span>
               </div>
 
-              <ul className="flex flex-col gap-2 w-full max-w-md">
+              <ul className="flex flex-col gap-3 w-full max-w-md">
                 {exp.details.map((detail, j) => (
-                  <li key={j} className="flex items-start gap-2 text-left">
-                    <CheckCircle2 size={13} className="text-emerald-400 shrink-0 mt-[3px]" />
-                    <span className="text-xs text-white/55 leading-[1.8] break-keep" style={{ wordBreak: "keep-all" }}>
+                  <li key={j} className="flex items-start gap-3 text-left">
+                    <CheckCircle2 size={14} className="text-emerald-400 shrink-0 mt-[3px]" />
+                    <span className="text-sm text-white/60 leading-[1.85] break-keep" style={{ wordBreak: "keep-all" }}>
                       {detail}
                     </span>
                   </li>

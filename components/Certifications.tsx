@@ -32,16 +32,16 @@ export default function Certifications() {
                 <Award size={18} className="text-orange-400" />
               </div>
 
-              <div className="flex flex-col items-center gap-1">
-                <p className="text-sm font-bold text-white break-keep" style={{ wordBreak: "keep-all" }}>
+              <div className="flex flex-col items-center gap-2">
+                <p className="text-base font-bold text-white break-keep" style={{ wordBreak: "keep-all" }}>
                   {cert.name}
                 </p>
-                <p className="text-xs text-white/40">{cert.issuer}</p>
+                <p className="text-sm text-white/40">{cert.issuer}</p>
               </div>
 
-              <div className="flex items-center gap-1.5 text-white/35">
-                <Calendar size={12} className="shrink-0" />
-                <span className="text-xs whitespace-nowrap">{cert.date}</span>
+              <div className="flex items-center gap-2 text-white/35">
+                <Calendar size={13} className="shrink-0" />
+                <span className="text-sm whitespace-nowrap">{cert.date}</span>
               </div>
             </motion.div>
           ))}

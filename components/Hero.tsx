@@ -9,24 +9,28 @@ const LINKS = [
     label: "GitHub",
     href: "https://github.com/LEESEOJUN-creator",
     external: true,
+    color: "text-violet-400",
   },
   {
     icon: BookOpen,
     label: "Velog",
     href: "https://velog.io/@seojun7988/posts",
     external: true,
+    color: "text-cyan-400",
   },
   {
     icon: Mail,
     label: "seojun7988@naver.com",
     href: "mailto:seojun7988@naver.com",
     external: false,
+    color: "text-cyan-400",
   },
   {
     icon: Phone,
     label: "010-4391-7988",
     href: "tel:01043917988",
     external: false,
+    color: "text-cyan-400",
   },
 ];
 
@@ -91,14 +95,14 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-wrap justify-center gap-3"
         >
-          {LINKS.map(({ icon: Icon, label, href, external }) => (
+          {LINKS.map(({ icon: Icon, label, href, external, color }) => (
             <a
               key={href}
               href={href}
               {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-white/6 border border-white/10 text-sm text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200 whitespace-nowrap"
+              className="inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-white/4 border border-white/8 text-sm font-medium text-white/75 hover:text-white hover:bg-white/8 hover:border-white/15 transition-all duration-200 whitespace-nowrap min-h-[56px]"
             >
-              <Icon size={15} className="shrink-0" />
+              <Icon size={17} className={`shrink-0 ${color}`} />
               {label}
             </a>
           ))}
