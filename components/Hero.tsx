@@ -58,7 +58,7 @@ export default function Hero() {
       />
 
       {/* 콘텐츠 */}
-      <div className="relative z-10 w-full max-w-2xl mx-auto px-6 sm:px-10 text-center flex flex-col items-center gap-10 pt-32 pb-24">
+      <div className="relative z-10 w-full max-w-3xl mx-auto px-6 sm:px-10 text-center flex flex-col items-center gap-10 pt-32 pb-24">
 
         {/* 이름 */}
         <motion.div
@@ -93,14 +93,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-wrap justify-center gap-3"
+          className="flex flex-wrap sm:flex-nowrap justify-center gap-2"
         >
           {LINKS.map(({ icon: Icon, label, href, external, color }) => (
             <a
               key={href}
               href={href}
               {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-white/4 border border-white/8 text-sm font-medium text-white/75 hover:text-white hover:bg-white/8 hover:border-white/15 transition-all duration-200 whitespace-nowrap min-h-[56px]"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/4 border border-white/8 text-sm font-medium text-white/75 hover:text-white hover:bg-white/8 hover:border-white/15 transition-all duration-200 whitespace-nowrap min-h-[52px]"
             >
               <Icon size={17} className={`shrink-0 ${color}`} />
               {label}
