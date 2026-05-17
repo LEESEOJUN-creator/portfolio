@@ -27,7 +27,7 @@ export const projects: Project[] = [
     slug: "dgu-cap",
     tag: ["팀프로젝트", "Backend"],
     title: "AI 기반 쿠버네티스 모니터링 플랫폼",
-    period: "2026.04 ~ 2026.10",
+    period: "2026.03 ~ 진행중",
     status: "진행중",
     shortDescription:
       "Kubernetes 환경의 메트릭·로그·이벤트를 통합 수집하고 AI가 이상을 감지·분석하여 티켓 자동 생성 및 실시간 알람까지 수행하는 SaaS형 지능형 모니터링 플랫폼 (한이음 공모전)",
