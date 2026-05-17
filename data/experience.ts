@@ -20,16 +20,16 @@ export type Certification = {
 export const educations: Education[] = [
   {
     school: "동국대학교",
-    departments: ["정보통신공학", "데이터사이언스SW"],
-    period: "2020.03 ~ 2026.02",
+    departments: ["정보통신공학"],
+    period: "2021.03 ~ ",
   },
 ];
 
 export const experiences: Experience[] = [
   {
-    company: "한국전력공사",
+    company: "한전엠씨에스 주식회사",
     role: "백엔드 개발 인턴",
-    period: "2024.xx ~ 2024.xx",
+    period: "2025.07.21 ~ 2025.08.29",
     details: [
       "PalmSecure 기반 손바닥 정맥 인식 결제 시스템 백엔드 담당",
       "Toss Payments API 연동 및 멱등성 처리로 중복 결제 방지",
@@ -43,6 +43,6 @@ export const certifications: Certification[] = [
   {
     name: "SQLD (SQL 개발자)",
     issuer: "한국데이터산업진흥원",
-    date: "2025.xx.xx",
+    date: "2025.12.12",
   },
 ];

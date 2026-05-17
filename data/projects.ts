@@ -27,7 +27,7 @@ export const projects: Project[] = [
     slug: "k8s-cicd",
     tag: ["개인프로젝트", "Infra"],
     title: "Kubernetes CI/CD + GitOps",
-    period: "2024.xx ~ 2024.xx",
+    period: "2026.03 ~ 2026.03",
     status: "완료",
     shortDescription:
       "GitHub Actions와 ArgoCD를 활용해 코드 push부터 자동 배포까지 이어지는 GitOps CI/CD 파이프라인을 구성한 실습 프로젝트",
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     slug: "k8s-monitoring",
     tag: ["개인프로젝트", "Infra"],
     title: "Kubernetes 모니터링",
-    period: "2024.xx ~ 2024.xx",
+    period: "2026.03 ~ 2026.04",
     status: "완료",
     shortDescription:
       "Prometheus/Grafana/Loki 기반 모니터링 스택을 직접 구성한 실습 프로젝트",
@@ -123,7 +123,7 @@ export const projects: Project[] = [
     slug: "graduation-checker",
     tag: ["팀프로젝트", "Backend"],
     title: "AI 기반 졸업요건 자동 판정 시스템",
-    period: "2024.xx ~ 2024.xx",
+    period: "2025.09.08 ~ 2025.12.18",
     status: "완료",
     shortDescription:
       "성적표 PDF를 기반으로 이수 과목을 추출하고 졸업 가능 여부를 판단하는 서비스",
@@ -165,7 +165,7 @@ export const projects: Project[] = [
     slug: "spring-security-auth",
     tag: ["개인프로젝트", "Backend"],
     title: "Spring Security 인증 실습",
-    period: "2024.xx ~ 2024.xx",
+    period: "2025.06 ~ 2025.07",
     status: "완료",
     shortDescription:
       "JWT 인증, Redis Refresh Token 관리, 카카오 OAuth2 로그인 연동을 직접 구현한 인증 실습 프로젝트",
