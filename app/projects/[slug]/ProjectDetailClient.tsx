@@ -54,14 +54,14 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 export default function ProjectDetailClient({ project }: { project: Project }) {
   return (
-    <div className="min-h-screen py-28 px-5 sm:px-8">
+    <div className="min-h-screen py-28 flex flex-col items-center px-5 sm:px-8">
       {/* 배경 */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-cyan-500/4 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-2xl mx-auto">
+      <div className="relative w-full max-w-2xl">
         {/* 뒤로가기 */}
         <FadeUp delay={0}>
           <Link
