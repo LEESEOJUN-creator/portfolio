@@ -8,7 +8,7 @@ export const skillCategories: SkillCategory[] = [
   {
     category: "Backend",
     icon: "⚙️",
-    skills: ["Java", "Spring Boot", "Spring Security", "JPA", "SQL"],
+    skills: ["Java", "Spring Boot", "Spring Security", "JPA", "C", "SQL"],
   },
   {
     category: "Database",
