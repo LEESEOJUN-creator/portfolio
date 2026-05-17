@@ -15,10 +15,10 @@ export default function Experience() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">Experience</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white text-center">Experience</h2>
         </motion.div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3">
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
@@ -26,32 +26,31 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="card px-7 py-6 flex gap-5"
+              className="card px-6 py-5 flex flex-col items-center text-center gap-4"
             >
               {/* 아이콘 */}
-              <div className="w-12 h-12 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center shrink-0 mt-0.5">
-                <Building2 size={20} className="text-violet-400" />
+              <div className="w-10 h-10 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center shrink-0">
+                <Building2 size={18} className="text-violet-400" />
               </div>
 
-              {/* 내용 */}
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
-                  <h3 className="text-base font-bold text-white">{exp.company}</h3>
-                  <span className="text-xs text-white/35 whitespace-nowrap">{exp.period}</span>
-                </div>
-                <p className="text-sm text-violet-300 mb-4">{exp.role}</p>
-
-                <ul className="flex flex-col gap-2.5">
-                  {exp.details.map((detail, j) => (
-                    <li key={j} className="flex items-start gap-2.5">
-                      <CheckCircle2 size={14} className="text-emerald-400 shrink-0 mt-[3px]" />
-                      <span className="text-sm text-white/55 leading-[1.8] break-keep" style={{ wordBreak: "keep-all" }}>
-                        {detail}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+              {/* 헤더 */}
+              <div className="flex flex-col items-center gap-1">
+                <h3 className="text-sm font-bold text-white">{exp.company}</h3>
+                <p className="text-xs text-violet-300">{exp.role}</p>
+                <span className="text-xs text-white/35">{exp.period}</span>
               </div>
+
+              {/* 상세 */}
+              <ul className="flex flex-col gap-2 w-full max-w-md">
+                {exp.details.map((detail, j) => (
+                  <li key={j} className="flex items-start gap-2 text-left">
+                    <CheckCircle2 size={13} className="text-emerald-400 shrink-0 mt-[3px]" />
+                    <span className="text-xs text-white/55 leading-[1.8] break-keep" style={{ wordBreak: "keep-all" }}>
+                      {detail}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>

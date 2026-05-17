@@ -18,7 +18,7 @@ export default function Education() {
           <h2 className="text-4xl sm:text-5xl font-bold text-white">Education</h2>
         </motion.div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3">
           {educations.map((edu, i) => (
             <motion.div
               key={i}
@@ -26,20 +26,18 @@ export default function Education() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="card px-7 py-6 flex items-center gap-5"
+              className="card px-6 py-5 flex flex-col items-center text-center gap-3"
             >
               {/* 아이콘 */}
-              <div className="w-12 h-12 rounded-full bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center shrink-0">
-                <GraduationCap size={22} className="text-cyan-400" />
+              <div className="w-10 h-10 rounded-full bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center shrink-0">
+                <GraduationCap size={18} className="text-cyan-400" />
               </div>
 
               {/* 내용 */}
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                  <h3 className="text-base font-bold text-white">{edu.school}</h3>
-                  <span className="text-xs text-white/35 whitespace-nowrap">{edu.period}</span>
-                </div>
-                <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-col items-center gap-2">
+                <h3 className="text-sm font-bold text-white">{edu.school}</h3>
+                <span className="text-xs text-white/35">{edu.period}</span>
+                <div className="flex flex-wrap justify-center gap-2">
                   {edu.departments.map((dept) => (
                     <span key={dept} className="px-3 py-1 text-xs font-medium rounded-md bg-cyan-500/12 text-cyan-300 border border-cyan-500/20 whitespace-nowrap">
                       {dept}
