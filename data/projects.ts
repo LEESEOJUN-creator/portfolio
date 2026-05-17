@@ -24,6 +24,65 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "dgu-cap",
+    tag: ["팀프로젝트", "Backend"],
+    title: "AI 기반 쿠버네티스 모니터링 플랫폼",
+    period: "2026.04 ~ 2026.10",
+    status: "진행중",
+    shortDescription:
+      "Kubernetes 환경의 메트릭·로그·이벤트를 통합 수집하고 AI가 이상을 감지·분석하여 티켓 자동 생성 및 실시간 알람까지 수행하는 SaaS형 지능형 모니터링 플랫폼 (한이음 공모전)",
+    description:
+      "Prometheus/Loki/K8s API로 메트릭·로그·이벤트를 통합 수집하고, 룰 기반 1차 탐지 후 AI 서버(FastAPI)에서 Isolation Forest ML·RAG·GPT로 정밀 분석하여 원인 설명과 해결책을 자동 생성하는 플랫폼입니다. 탐지된 이상은 티켓으로 자동 생성되고 이메일·SSE로 실시간 알람됩니다. 한이음 공모전 출품 및 GitHub 오픈소스 공개를 목표로 진행 중입니다.",
+    role: "Spring Boot 백엔드 전체 담당 (데이터 수집·룰 기반 탐지·AI 연동·티켓 자동화·SSE/이메일 알람·REST API) 및 React 프론트엔드 담당 (실시간 대시보드·티켓 UI·SSE 연동, Claude Code 활용)",
+    techStack: [
+      { name: "Java 17 / Spring Boot 3" },
+      { name: "Spring Data JPA / PostgreSQL" },
+      {
+        name: "Redis",
+        reason: "동일 이상 10분 내 중복 티켓 생성을 방지하기 위해 TTL 키로 관리",
+      },
+      { name: "Prometheus / Loki / K8s API", reason: "메트릭·로그·클러스터 이벤트를 각 소스에서 30초 주기로 통합 수집" },
+      { name: "AWS SES / SSE" },
+      { name: "React / Chart.js" },
+      { name: "FastAPI (AI 서버, 팀원 담당)" },
+    ],
+    issues: [
+      {
+        issue: "AI 서버 장애 시 전체 탐지 흐름이 중단되는 문제",
+        analysis:
+          "AI 분석 요청이 타임아웃되거나 실패할 경우 티켓 생성 자체가 막히면 모니터링 핵심 기능이 중단됨",
+        solution:
+          "RestTemplate에 연결 3초·응답 10초 타임아웃 설정 후 try-catch로 AI 호출 실패를 감지, AI 없이도 룰 기반 결과만으로 티켓을 생성하는 fallback 흐름 구현",
+        result: "AI 서버 장애와 무관하게 이상 감지·티켓 생성·알람 흐름 유지",
+      },
+      {
+        issue: "30초 스케줄러가 반복 실행되며 동일 이상에 대해 티켓이 중복 생성됨",
+        analysis:
+          "스케줄러가 매 사이클마다 동일 Pod의 동일 이상을 새로 감지하므로 제한 없이 티켓이 누적됨",
+        solution:
+          "이상 감지 시 Redis에 'ticket:{podName}:{anomalyType}' 키를 10분 TTL로 저장하고, 키가 존재하면 티켓 생성을 건너뛰는 중복 방지 로직 추가",
+        result: "동일 이상에 대해 10분 내 티켓 중복 생성 차단",
+      },
+      {
+        issue: "다수 클라이언트의 SSE 연결을 서버에서 관리하고 이벤트를 브로드캐스트해야 하는 구조 필요",
+        analysis:
+          "SSE는 연결마다 별도 SseEmitter를 유지해야 하며, 타임아웃·에러 시 정리하지 않으면 메모리 누수 발생",
+        solution:
+          "ConcurrentHashMap으로 SseEmitter를 관리하고 onCompletion·onTimeout·onError 콜백에서 자동 제거, 이벤트 발생 시 전체 연결에 브로드캐스트",
+        result: "다수 클라이언트 실시간 수신 및 연결 안정성 확보",
+      },
+    ],
+    retrospective: {
+      growth:
+        "단일 서비스가 아닌 수집·탐지·AI·알람이 분리된 분산 구조에서 각 컴포넌트 장애 시나리오를 설계 단계부터 고려하는 경험을 쌓고 있음",
+      regret:
+        "아직 진행 중이라 전체 흐름을 실제 EKS 환경에서 검증하지 못했고, AI 분석 품질을 정량적으로 측정하는 방법을 충분히 고민하지 못함",
+      future:
+        "AWS EKS 실 환경 배포 및 ArgoCD 자동 배포 연동, 해결 이력을 Vector DB에 학습시켜 RAG 분석 품질을 지속 개선",
+    },
+    github: "https://github.com/DGU-CAP",
+  },
+  {
     slug: "k8s-cicd",
     tag: ["개인프로젝트", "Infra"],
     title: "Kubernetes CI/CD + GitOps",
@@ -165,7 +224,7 @@ export const projects: Project[] = [
     slug: "hidden-growth",
     tag: ["팀프로젝트", "Backend"],
     title: "Hidden Growth",
-    period: "2025",
+    period: "2025.11.22 ~ 2025.11.23",
     status: "완료",
     shortDescription:
       "사용자의 비정형 경험 데이터를 AI 인터뷰·분석을 통해 스킬, 성장 지표, 포트폴리오 데이터로 구조화하는 AI 기반 커리어 성장 자동화 플랫폼",

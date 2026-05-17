@@ -15,6 +15,7 @@ const TAG_COLORS: Record<string, string> = {
 };
 
 const THUMBNAILS: Record<string, { from: string; via: string; to: string; icon: string }> = {
+  "dgu-cap":             { from: "from-blue-900/70",   via: "via-indigo-900/50",  to: "to-slate-900/70", icon: "🛡️" },
   "k8s-cicd":            { from: "from-violet-900/70", via: "via-indigo-900/50",  to: "to-slate-900/70", icon: "⚙️" },
   "k8s-monitoring":      { from: "from-cyan-900/70",   via: "via-teal-900/50",   to: "to-slate-900/70", icon: "📊" },
   "graduation-checker":  { from: "from-orange-900/70", via: "via-amber-900/50",  to: "to-slate-900/70", icon: "🎓" },
