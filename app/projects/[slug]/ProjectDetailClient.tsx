@@ -144,29 +144,27 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
           <FadeUp delay={0.2}>
             <div className="card p-7">
               <SectionLabel>기술 스택</SectionLabel>
-              <ul className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3">
                 {project.techStack.map((tech) => (
-                  <li key={tech.name}>
-                    {/* 기술 이름 뱃지 */}
-                    <span className="inline-flex items-center px-3 py-1.5 text-xs rounded-lg bg-violet-500/10 text-violet-300 border border-violet-500/20 font-mono font-medium whitespace-nowrap mb-2">
+                  <div key={tech.name} className="flex flex-wrap items-start gap-3">
+                    <span className="inline-flex items-center px-3 py-1.5 text-xs rounded-lg bg-violet-500/10 text-violet-300 border border-violet-500/20 font-mono font-medium whitespace-nowrap shrink-0">
                       {tech.name}
                     </span>
-                    {/* 선택 이유: 있을 때만 */}
                     {tech.reason && (
                       <p
-                        className="flex items-start gap-2 text-sm text-white/45 leading-[1.9] break-keep"
+                        className="flex items-start gap-1.5 text-sm text-white/45 leading-[1.7] break-keep min-w-0 pt-0.5"
                         style={{ wordBreak: "keep-all" }}
                       >
                         <ChevronRight
                           size={13}
-                          className="shrink-0 mt-[3px] text-violet-500/50"
+                          className="shrink-0 mt-[2px] text-violet-500/50"
                         />
                         {tech.reason}
                       </p>
                     )}
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </FadeUp>
 
