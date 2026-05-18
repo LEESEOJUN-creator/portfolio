@@ -194,8 +194,7 @@ export const projects: Project[] = [
       { name: "Spring Boot" },
       { name: "JPA" },
       { name: "MySQL" },
-      { name: "PDFBox" },
-      { name: "Tabula" },
+      { name: "FastAPI", reason: "AI 분석 기능을 분리된 외부 서버로 제공하는 AI 서버 (팀원 담당)" },
     ],
     issues: [
       {
