@@ -34,7 +34,7 @@ export const projects: Project[] = [
     description:
       "Kubernetes 클러스터의 메트릭·로그·이벤트를 실시간 수집하고, 룰 기반 1차 탐지 → 통계(z-score) → ML(Isolation Forest) 3중 이상탐지를 거친 데이터만 AI 서버로 전달해 RAG+LLM(GPT-4o-mini)으로 근본 원인과 해결책을 자연어로 분석하는 AIOps 플랫폼입니다. AI(1명)·인프라(1명)·배포·CI/CD(1명)와 함께한 4인 팀 프로젝트에서, 이상탐지부터 티켓 생성·알림까지 이어지는 백엔드 처리 계층과 Next.js 대시보드 프론트엔드 전체를 담당했습니다.",
     role:
-      "Spring Boot 백엔드 처리 계층 담당 (이상탐지 엔진, AI 서버 연동 및 Fallback 설계, 티켓 생성·관리, SES 이메일·SSE 실시간 알림, REST API 설계, 약 50%). Next.js 프론트엔드 전체 담당 (대시보드, Pod/티켓 목록·상세, 메트릭 차트, SSE 실시간 연동, 약 40%) — Claude Code를 활용해 이슈·브랜치·PR·리뷰 워크플로를 자동화하며 개발. kind 로컬 클러스터 구성, Dockerfile 작성 등 인프라 일부도 보조.",
+      "Spring Boot 백엔드 처리 계층 담당 (이상탐지 엔진, AI 서버 연동 및 Fallback 설계, 티켓 생성·관리, SES 이메일·SSE 실시간 알림, REST API 설계). Next.js 프론트엔드 전체 담당 (대시보드, Pod/티켓 목록·상세, 메트릭 차트, SSE 실시간 연동) — Claude Code를 활용해 이슈·브랜치·PR·리뷰 워크플로를 자동화하며 개발.",
     techStack: [
       { name: "Java 17 / Spring Boot 3.4.5" },
       { name: "Spring Data JPA / Spring Data Redis" },
