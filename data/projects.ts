@@ -26,59 +26,71 @@ export const projects: Project[] = [
   {
     slug: "dgu-cap",
     tag: ["팀프로젝트", "Backend", "Frontend"],
-    title: "AI 기반 쿠버네티스 모니터링 플랫폼",
-    period: "2026.03 ~ 진행중",
-    status: "진행중",
+    title: "AI 기반 쿠버네티스 모니터링 SaaS 플랫폼",
+    period: "2026.03 ~ 2026.06",
+    status: "완료",
     shortDescription:
-      "Kubernetes 환경의 메트릭·로그·이벤트를 통합 수집하고 AI가 이상을 감지·분석하여 티켓 자동 생성 및 실시간 알람까지 수행하는 SaaS형 지능형 모니터링 플랫폼",
+      "Kubernetes 클러스터의 메트릭·로그·이벤트를 통합 수집하고 룰 기반 + 통계(z-score) + ML(Isolation Forest) 3중 이상탐지를 거쳐 RAG+LLM으로 원인을 분석, 티켓 자동 생성과 실시간 알림까지 수행하는 AIOps SaaS 플랫폼 (4인 팀)",
     description:
-      "Prometheus/Loki/K8s API로 메트릭·로그·이벤트를 통합 수집하고, 룰 기반 1차 탐지 후 AI 서버(FastAPI)에서 Isolation Forest ML·RAG·GPT로 정밀 분석하여 원인 설명과 해결책을 자동 생성하는 플랫폼입니다. 탐지된 이상은 티켓으로 자동 생성되고 이메일·SSE로 실시간 알람됩니다.",
-    role: "Spring Boot 백엔드 전체 담당 (데이터 수집·룰 기반 탐지·AI 연동·티켓 자동화·SSE/이메일 알람·REST API). React 프론트엔드 담당 (실시간 메트릭 대시보드·티켓 목록/상세 UI·SSE 실시간 연동) — Claude Code를 활용해 AI와 협업하며 대시보드를 설계·구현.",
+      "Kubernetes 클러스터의 메트릭·로그·이벤트를 실시간 수집하고, 룰 기반 1차 탐지 → 통계(z-score) → ML(Isolation Forest) 3중 이상탐지를 거친 데이터만 AI 서버로 전달해 RAG+LLM(GPT-4o-mini)으로 근본 원인과 해결책을 자연어로 분석하는 AIOps 플랫폼입니다. AI(1명)·인프라(1명)·배포·CI/CD(1명)와 함께한 4인 팀 프로젝트에서, 이상탐지부터 티켓 생성·알림까지 이어지는 백엔드 처리 계층과 Next.js 대시보드 프론트엔드 전체를 담당했습니다.",
+    role:
+      "Spring Boot 백엔드 처리 계층 담당 (이상탐지 엔진, AI 서버 연동 및 Fallback 설계, 티켓 생성·관리, SES 이메일·SSE 실시간 알림, REST API 설계, 약 50%). Next.js 프론트엔드 전체 담당 (대시보드, Pod/티켓 목록·상세, 메트릭 차트, SSE 실시간 연동, 약 40%) — Claude Code를 활용해 이슈·브랜치·PR·리뷰 워크플로를 자동화하며 개발. kind 로컬 클러스터 구성, Dockerfile 작성 등 인프라 일부도 보조.",
     techStack: [
-      { name: "Java 17 / Spring Boot 3" },
-      { name: "Spring Data JPA / PostgreSQL" },
+      { name: "Java 17 / Spring Boot 3.4.5" },
+      { name: "Spring Data JPA / Spring Data Redis" },
+      { name: "PostgreSQL", reason: "메트릭 스냅샷, 티켓, 조치 이력 등 영구 데이터 저장" },
       {
         name: "Redis",
-        reason: "동일 이상 10분 내 중복 티켓 생성을 방지하기 위해 TTL 키로 관리",
+        reason: "동일 이상 10분 내 중복 티켓 생성을 방지하기 위해 TTL 키(ticket:{pod}:{type})로 관리",
       },
-      { name: "Prometheus / Loki / K8s API", reason: "메트릭·로그·클러스터 이벤트를 각 소스에서 30초 주기로 통합 수집" },
+      { name: "Kubernetes client-java / Prometheus / Loki", reason: "메트릭·로그·클러스터 이벤트를 30초 주기로 통합 수집" },
       { name: "AWS SES / SSE" },
-      { name: "React / Chart.js" },
-      { name: "FastAPI (AI 서버, 팀원 담당)" },
+      { name: "Next.js 16 / React 19 / TypeScript" },
+      { name: "TanStack Query v5 / Zustand v5", reason: "서버 상태는 TanStack Query로 캐시·자동갱신, SSE 알림 등 전역 UI 상태는 Zustand로 분리 관리" },
+      { name: "Recharts" },
+      { name: "FastAPI / Isolation Forest / ChromaDB / GPT-4o-mini (AI 서버, 팀원 담당)" },
     ],
     issues: [
       {
-        issue: "AI 서버 장애 시 전체 탐지 흐름이 중단되는 문제",
+        issue: "AI 서버 장애 시 핵심 기능인 티켓 생성까지 함께 중단되는 문제",
         analysis:
-          "AI 분석 요청이 타임아웃되거나 실패할 경우 티켓 생성 자체가 막히면 모니터링 핵심 기능이 중단됨",
+          "모니터링 시스템이 AI 서버 장애로 같이 멈추면 본래 목적과 모순되며, LLM 호출 특성상 응답 지연·실패 가능성도 상시 존재함",
         solution:
-          "RestTemplate에 연결 3초·응답 10초 타임아웃 설정 후 try-catch로 AI 호출 실패를 감지, AI 없이도 룰 기반 결과만으로 티켓을 생성하는 fallback 흐름 구현",
-        result: "AI 서버 장애와 무관하게 이상 감지·티켓 생성·알람 흐름 유지",
+          "RestTemplate에 연결 3초·응답 10초 타임아웃을 설정하고 try-catch로 AI 호출 실패를 감지, AI 없이도 severity=MEDIUM 기본 분석으로 단독 티켓을 생성하는 Fallback 흐름 구현",
+        result: "AI 서버 장애와 무관하게 이상 감지부터 티켓 생성·알림까지 흐름이 끊기지 않음",
       },
       {
         issue: "30초 스케줄러가 반복 실행되며 동일 이상에 대해 티켓이 중복 생성됨",
         analysis:
-          "스케줄러가 매 사이클마다 동일 Pod의 동일 이상을 새로 감지하므로 제한 없이 티켓이 누적됨",
+          "스케줄러가 매 사이클마다 동일 Pod의 동일 이상을 새로 감지해 제한 없이 티켓이 누적됨",
         solution:
-          "이상 감지 시 Redis에 'ticket:{podName}:{anomalyType}' 키를 10분 TTL로 저장하고, 키가 존재하면 티켓 생성을 건너뛰는 중복 방지 로직 추가",
-        result: "동일 이상에 대해 10분 내 티켓 중복 생성 차단",
+          "이상 감지 시 Redis에 'ticket:{podName}:{anomalyType}' 키를 10분 TTL로 저장하고, 키가 존재하면 생성을 건너뛰는 중복 방지 로직 추가. DB 조회 대신 Redis를 쓴 이유는 자동 만료(TTL) 기반 삭제가 필요하고 30초 주기 조회에 인메모리 캐시가 더 빠르기 때문",
+        result: "동일 이상에 대한 10분 내 티켓 중복 생성 차단",
       },
       {
-        issue: "다수 클라이언트의 SSE 연결을 서버에서 관리하고 이벤트를 브로드캐스트해야 하는 구조 필요",
+        issue: "다수 클라이언트의 SSE 연결을 동시성 문제 없이 관리하고 브로드캐스트해야 하는 구조 필요",
         analysis:
-          "SSE는 연결마다 별도 SseEmitter를 유지해야 하며, 타임아웃·에러 시 정리하지 않으면 메모리 누수 발생",
+          "30초 스케줄러 스레드가 이벤트를 보내는 동시에 HTTP 스레드가 새 연결을 추가할 수 있어, 일반 ArrayList로는 ConcurrentModificationException 위험이 있고 끊어진 연결을 방치하면 메모리 누수로 이어짐",
         solution:
-          "ConcurrentHashMap으로 SseEmitter를 관리하고 onCompletion·onTimeout·onError 콜백에서 자동 제거, 이벤트 발생 시 전체 연결에 브로드캐스트",
-        result: "다수 클라이언트 실시간 수신 및 연결 안정성 확보",
+          "CopyOnWriteArrayList로 SseEmitter 목록을 관리해 동시 접근 문제를 해소하고, 전송 실패한 emitter는 dead 리스트에 모아 일괄 정리",
+        result: "다수 클라이언트 환경에서 동시성 이슈 없는 안정적인 실시간 알림 전송",
+      },
+      {
+        issue: "SSE 실시간성과 화면에 보이는 데이터의 정합성을 동시에 보장해야 하는 문제",
+        analysis:
+          "SSE로 받은 일부 데이터를 화면 상태에 직접 반영하면 서버의 전체 데이터와 어긋날 위험이 있음",
+        solution:
+          "SSE 이벤트 수신 시 TanStack Query의 invalidateQueries로 관련 쿼리를 stale 처리해 자동 refetch시키고, 알람 배너 같은 전역 UI 상태만 Zustand로 별도 관리하는 '폴링과 푸시를 결합한 동기화' 패턴 적용",
+        result: "실시간 알림 즉시성과 대시보드 데이터 정합성을 동시에 확보",
       },
     ],
     retrospective: {
       growth:
-        "단일 서비스가 아닌 수집·탐지·AI·알람이 분리된 분산 구조에서 각 컴포넌트 장애 시나리오를 설계 단계부터 고려하는 경험을 쌓고 있음",
+        "외부 서비스(AI 서버) 장애에도 핵심 흐름이 죽지 않는 Fallback 설계, Redis를 캐시가 아닌 분산 상태 관리 도구로 활용하는 경험, SSE+TanStack Query 조합으로 실시간성과 데이터 정합성을 함께 satisfy하는 패턴을 백엔드·프론트엔드 양쪽에서 직접 설계하며 익혔습니다.",
       regret:
-        "아직 진행 중이라 전체 흐름을 실제 EKS 환경에서 검증하지 못했고, AI 분석 품질을 정량적으로 측정하는 방법을 충분히 고민하지 못함",
+        "AI 서버 응답 지연(LLM 호출 특성)에 대한 타임아웃 값을 더 정교하게 튜닝하지 못했고, SSE 자동 재연결 로직의 모든 예외 케이스를 충분히 검증하지 못했습니다.",
       future:
-        "AWS EKS 실 환경 배포 및 ArgoCD 자동 배포 연동, 해결 이력을 Vector DB에 학습시켜 RAG 분석 품질을 지속 개선",
+        "EKS 운영 환경에서 실제 트래픽 기반 성능 측정, 알림 채널 다양화(Slack 연동 등), 해결 이력을 Vector DB에 누적 학습시켜 RAG 분석 품질을 지속 개선할 계획입니다.",
     },
     github: "https://github.com/DGU-CAP",
   },
