@@ -25,9 +25,4 @@ export const skillCategories: SkillCategory[] = [
     icon: "📊",
     skills: ["Prometheus", "Grafana", "Loki"],
   },
-  {
-    category: "Frontend",
-    icon: "🖥️",
-    skills: ["React", "Next.js", "TypeScript", "Chart.js"],
-  },
 ];
