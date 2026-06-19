@@ -16,7 +16,6 @@ export type Project = {
   }[];
   retrospective: {
     growth: string;
-    regret: string;
     future: string;
   };
   github?: string;
@@ -87,8 +86,6 @@ export const projects: Project[] = [
     retrospective: {
       growth:
         "외부 서비스(AI 서버) 장애에도 핵심 흐름이 죽지 않는 Fallback 설계, Redis를 캐시가 아닌 분산 상태 관리 도구로 활용하는 경험, SSE+TanStack Query 조합으로 실시간성과 데이터 정합성을 함께 satisfy하는 패턴을 백엔드·프론트엔드 양쪽에서 직접 설계하며 익혔습니다.",
-      regret:
-        "AI 서버 응답 지연(LLM 호출 특성)에 대한 타임아웃 값을 더 정교하게 튜닝하지 못했고, SSE 자동 재연결 로직의 모든 예외 케이스를 충분히 검증하지 못했습니다.",
       future:
         "EKS 운영 환경에서 실제 트래픽 기반 성능 측정, 알림 채널 다양화(Slack 연동 등), 해결 이력을 Vector DB에 누적 학습시켜 RAG 분석 품질을 지속 개선할 계획입니다.",
     },
@@ -142,8 +139,6 @@ export const projects: Project[] = [
     retrospective: {
       growth:
         "자동화를 단순히 연결하는 것이 아니라 변경 감지 방식과 반복 실행 문제까지 고려하며 구조를 설계하는 경험",
-      regret:
-        "로컬 kind 환경이라 실제 클라우드 환경(EKS 등)에서 LoadBalancer 타입 Service 동작을 직접 확인하지 못함",
       future: "실제 클라우드 환경에서 전체 흐름 적용해보기",
     },
   },
@@ -186,7 +181,6 @@ export const projects: Project[] = [
     retrospective: {
       growth:
         "장애 상황에서 재설치보다 로그 분석으로 근본 원인을 찾는 접근 방식을 익힘",
-      regret: "알림(Alert) 설정까지 연결하지 못함",
       future: "Alertmanager 연동으로 임계치 초과 시 알림 받는 구조 추가",
     },
   },
@@ -227,7 +221,6 @@ export const projects: Project[] = [
     ],
     retrospective: {
       growth: "입력 데이터 신뢰성 확보와 도메인 규칙 처리의 중요성을 실무적으로 이해",
-      regret: "N+1 개선 전후 정확한 수치 측정을 하지 못함",
       future: "fetch join 또는 DTO Projection으로 쿼리 최적화 개선",
     },
   },
@@ -271,7 +264,6 @@ export const projects: Project[] = [
     retrospective: {
       growth:
         "AI 분석 결과 자체보다 그 결과를 어떤 DTO로 받아 어떤 도메인 데이터로 저장하고 제공할지가 백엔드 핵심이라는 점을 실감",
-      regret: "외부 AI 서버와의 연동 부분을 더 직접적으로 구현하지 못함",
       future: "외부 API 연동, 응답 검증, 예외 처리 구조를 직접 설계하는 경험 쌓기",
     },
   },
@@ -317,8 +309,6 @@ export const projects: Project[] = [
     retrospective: {
       growth:
         "세션 방식과 토큰 방식의 구조적 차이와 각각의 trade-off를 직접 구현하며 이해",
-      regret:
-        "Access Token 블랙리스트 처리를 구현하지 못해 로그아웃 후 완전한 무효화가 안 됨",
       future: "Redis 블랙리스트로 Access Token도 즉시 무효화하는 구조 추가",
     },
   },

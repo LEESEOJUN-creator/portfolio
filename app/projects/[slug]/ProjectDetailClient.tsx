@@ -284,22 +284,6 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
                   </p>
                 </div>
 
-                {/* 아쉬운 점 */}
-                <div className="rounded-xl bg-orange-500/6 border border-orange-500/15 p-5">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-orange-400 text-sm leading-none">△</span>
-                    <span className="text-xs font-bold text-orange-400 tracking-wide">
-                      아쉬운 점
-                    </span>
-                  </div>
-                  <p
-                    className="text-sm text-white/60 leading-[1.95] break-keep"
-                    style={{ wordBreak: "keep-all" }}
-                  >
-                    {project.retrospective.regret}
-                  </p>
-                </div>
-
                 {/* 향후 방향 */}
                 <div className="rounded-xl bg-cyan-500/6 border border-cyan-500/15 p-5">
                   <div className="flex items-center gap-2 mb-3">
